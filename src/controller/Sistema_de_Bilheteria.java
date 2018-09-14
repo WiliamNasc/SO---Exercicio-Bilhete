@@ -34,7 +34,6 @@ public class Sistema_de_Bilheteria extends Thread{
 	
 	public void vendas_Bilhete(){
 	
-		Random compra_In = new Random();
 		
 		
 		
@@ -46,5 +45,21 @@ public class Sistema_de_Bilheteria extends Thread{
 		
 		
 	}*/
+	
+//--------------------------------------------------------------------------------------
+	
+	public int avaliar_Compra(Random r){
+		
+		int qtde = r.nextInt(4);
+		
+		while(qtde == 0){
+			
+			qtde = r.nextInt(4);
+		}
+		
+		System.out.println(qtde);
+		
+		return qtde;
+	}
 
 }
