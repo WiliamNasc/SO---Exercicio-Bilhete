@@ -24,13 +24,15 @@ public class Main {
 				
 		
 		
-		for (int i = 0; i < 2; i++){
+		for (int i = 0; i < 300; i++){
 		
 			Sistema_de_Bilheteria bilhetes = 
 					new Sistema_de_Bilheteria(pessoas,semafaro,maxIngressos,
 							qtdeIngressos);
 			
 			qtdeIngressos = bilhetes.avaliar_Compra(qtdecomprada);
+			bilhetes.vendas_Bilhete();
+			bilhetes.Login_User();
 			
 		}
 		
