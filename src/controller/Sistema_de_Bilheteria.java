@@ -6,12 +6,13 @@ public class Sistema_de_Bilheteria extends Thread{
 	
 	private int pessoas;
 	private Semaphore semafaro;
+	private int ingressos;
 	
-	public Sistema_de_Bilheteria (int pessoas, Semaphore semaforo){
+	public Sistema_de_Bilheteria (int pessoas, Semaphore semaforo, int ingressos){
 		
 		this.pessoas = pessoas;
 		this.semafaro = semafaro;
-	
+		this.ingressos = ingressos;
 	}
 	
 //--------------------------------------------------------------------------------------
@@ -25,7 +26,7 @@ public class Sistema_de_Bilheteria extends Thread{
 	
 //--------------------------------------------------------------------------------------
 	
-	public void vendas_Bilhete(int pessoas, Semaphore semafaro){
+	public void vendas_Bilhete(){
 	
 		
 		
