@@ -1,5 +1,7 @@
 package controller;
 
+import java.util.Random;
+
 public class Ingressos {
 	
 // a ideia e passar os valores no main e manipulalos aqui
@@ -8,6 +10,8 @@ public class Ingressos {
 	private int totalPessoas = 300;
 	private int minIngressos = 1;
 	private int maxIngressos = 4;
+	private int ingressosVendidos = 0;
+	private Random rIngressos = new Random ();
 	
 // GET && SET de total de Ingressos
 	
@@ -38,12 +42,29 @@ public class Ingressos {
 	
 // GET && SET de maximo de ingressos a serem vendidos
 	
-	public int setMaxIngressos(){return this.maxIngressos;}
+	public int getMaxIngressos(){return this.maxIngressos;}
 	
-	public void getMaxIngressos(int maxIngressos)
+	public void setMaxIngressos(int maxIngressos)
 	{this.maxIngressos = maxIngressos;}
 
 //---------------------------------------------------------------------------
 
+// GET && SET de ingressos vendidos
+	
+	public int getIngressosVendidos(){return this.ingressosVendidos;}
+	
+	public void setIngressosVendidos(int ingressosVendidos)
+	{this.ingressosVendidos = ingressosVendidos;}
+	
+//----------------------------------------------------------------------------
 
+// GET && SET de ingressos aleatorios
+	
+	public Random getRIngressos(){return this.rIngressos;}
+	
+	public void setRIngressos(Random rIngressos)
+	{this.rIngressos = rIngressos;}
+
+//----------------------------------------------------------------------------
+	
 }

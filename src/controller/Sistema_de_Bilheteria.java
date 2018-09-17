@@ -51,20 +51,17 @@ public class Sistema_de_Bilheteria extends Thread{
 		
 		int tempoEspera = (int) ((Math.random() * 3001));
 		
-		if (tempoEspera == 3000){
+		if (tempoEspera >= 3000){
 			
-			JOptionPane.showMessageDialog(null, "n�o liberado");
-			
+			System.out.println("Login Out");
 			return false;
+		}
+		else{
 			
-		}else{
-			
-			//JOptionPane.showMessageDialog(null,"liberado");
-			
-			//vendas_Bilhete();
 			
 			return true;
 		}
+			
 		
 	}
 	
