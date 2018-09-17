@@ -32,11 +32,13 @@ public class Sistema_de_Bilheteria extends Thread{
 	
 	public void vendas_Bilhete(int i){
 		
-		infoShow.setCapacidadeShow(infoShow.getCapacidadeShow() - i);
+		infoShow.setCapacidadeShow(infoShow.getCapacidadeShow() - 
+				avaliar_Compra(infoShow.getRIngressos()));
 		
 		if (infoShow.getCapacidadeShow() > 0)
 			
-			System.out.println("Ingressos Disponiveis");
+			System.out.println("Ingressos Disponiveis = " + infoShow.getCapacidadeShow());
+			
 		
 		else
 			
@@ -53,7 +55,7 @@ public class Sistema_de_Bilheteria extends Thread{
 		
 		if (tempoEspera >= 3000){
 			
-			System.out.println("Login Out");
+			
 			return false;
 		}
 		else{
@@ -76,7 +78,7 @@ public class Sistema_de_Bilheteria extends Thread{
 			qtde = r.nextInt(4);
 		}
 		
-		System.out.println(qtde);
+		System.out.println("Quantidade de ingressos comprados = " + qtde);
 		
 		return qtde;
 	}

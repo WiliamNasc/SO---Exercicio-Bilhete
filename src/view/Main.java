@@ -17,17 +17,26 @@ public class Main {
 	int ingressos = 0;
 	Random r = new Random ();
 	
-	for(int i = 0; i < 300; i++){
-		
 	Sistema_de_Bilheteria sisB =
 			new Sistema_de_Bilheteria(capacidadeShow, maxIngresso);
 	
-	ingressos += sisB.avaliar_Compra(in.getRIngressos());
-	sisB.vendas_Bilhete(ingressos);
+	for(int i = 0; i < 300; i++){
+	
 	teste +=1;
-	System.out.println(teste);
+	System.out.println("Pessoa: " + teste);
+		
+	Sistema_de_Bilheteria sisB1 =
+			new Sistema_de_Bilheteria(capacidadeShow, maxIngresso);
+	
+	
+	sisB.vendas_Bilhete(in.getIngressosVendidos());
+	
+	
 	
 	}
+	
+	
+	
 	
 	}
 
