@@ -7,20 +7,16 @@ import javax.swing.JOptionPane;
 
 public class Sistema_de_Bilheteria extends Thread{
 	
-	private int pessoas;
-	private Semaphore semafaro;
-	private int maxIngressos;
-	private int qtdeIngressos;
+	private Semaphore capacidaShow;
+	private Semaphore maxIngressos;
+	Ingressos infoShow = new Ingressos();
 	
-// a ideia é passar os valores no main e manipulalos aqui
-	
-	public Sistema_de_Bilheteria (int pessoas, Semaphore semaforo,
-			int maxIngressos, int qtdeIngressos){
+	public Sistema_de_Bilheteria (Semaphore capacidadeShow,
+			Semaphore maxIngresso){
 		
-		this.pessoas = pessoas;
-		this.semafaro = semafaro;
-		this.maxIngressos = maxIngressos;
-		this.qtdeIngressos = qtdeIngressos;
+		this.capacidaShow = capacidadeShow;
+		this.maxIngressos = maxIngresso;
+	
 	}
 	
 //--------------------------------------------------------------------------------------
@@ -34,21 +30,18 @@ public class Sistema_de_Bilheteria extends Thread{
 	
 //--------------------------------------------------------------------------------------
 	
-	public void vendas_Bilhete(){
-	
-		int total = 0;
+	public void vendas_Bilhete(int i){
 		
-		total += qtdeIngressos - maxIngressos;
+		infoShow.setCapacidadeShow(infoShow.getCapacidadeShow() - i);
 		
-		if (total == 0)
+		if (infoShow.getCapacidadeShow() > 0)
 			
-			JOptionPane.showMessageDialog(null, "Acabou os ingressos");
+			System.out.println("Ingressos Disponiveis");
 		
 		else
 			
-			System.out.println("Disponivel");
-		    qtdeIngressos += total;
-		
+			System.out.println("Ingressos acabaram !!!");
+		    		
 		
 	}
 	
@@ -60,7 +53,7 @@ public class Sistema_de_Bilheteria extends Thread{
 		
 		if (tempoEspera == 3000){
 			
-			JOptionPane.showMessageDialog(null, "não liberado");
+			JOptionPane.showMessageDialog(null, "nï¿½o liberado");
 			
 			return false;
 			
@@ -68,7 +61,7 @@ public class Sistema_de_Bilheteria extends Thread{
 			
 			//JOptionPane.showMessageDialog(null,"liberado");
 			
-			vendas_Bilhete();
+			//vendas_Bilhete();
 			
 			return true;
 		}

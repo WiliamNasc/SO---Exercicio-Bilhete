@@ -3,45 +3,29 @@ package view;
 import java.util.Random;
 import java.util.concurrent.Semaphore;
 
+import controller.Ingressos;
 import controller.Sistema_de_Bilheteria;
 
 public class Main {
 
 	public static void main(String[] args) {
-        
-	
-		
-		int pessoas = 300;
-		int max_Pessoas = 100;
-		int qtdeIngressos = 0 ;
-		int maxIngressos = 100;
-		Semaphore semafaro = new Semaphore(max_Pessoas);
-		Random qtdecomprada = new Random();
-		
-		
-		
-		
-				
-		
-		
-		for (int i = 0; i < 300; i++){
-		
-			Sistema_de_Bilheteria bilhetes = 
-					new Sistema_de_Bilheteria(pessoas,semafaro,maxIngressos,
-							qtdeIngressos);
-			
-			qtdeIngressos = bilhetes.avaliar_Compra(qtdecomprada);
-			bilhetes.vendas_Bilhete();
-			bilhetes.Login_User();
-			
-		}
-		
-		
-	
-		
-		
-		
 
+	Ingressos in = new Ingressos();
+	int teste =0;
+	Semaphore capacidadeShow = null;
+	Semaphore maxIngresso = null;
+	
+	for(int i = 0; i < 300; i++){
+		
+	Sistema_de_Bilheteria sisB =
+			new Sistema_de_Bilheteria(capacidadeShow, maxIngresso);
+	
+	sisB.vendas_Bilhete(i);
+	teste +=1;
+	System.out.println(teste);
+	
+	}
+	
 	}
 
 }
