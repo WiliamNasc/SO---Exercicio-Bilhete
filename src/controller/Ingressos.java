@@ -11,6 +11,7 @@ public class Ingressos {
 	private int minIngressos = 1;
 	private int maxIngressos = 4;
 	private int ingressosVendidos = 0;
+	private int numPermissoes = 1;
 	private Random rIngressos = new Random ();
 	
 // GET && SET de total de Ingressos
@@ -66,5 +67,13 @@ public class Ingressos {
 	{this.rIngressos = rIngressos;}
 
 //----------------------------------------------------------------------------
+
+// GET && SET  de numero de permissoes do semaphore
 	
+	public int getNumPermissoes(){return this.numPermissoes;}
+	
+	public void setNumPermissoes(int numPermissoes)
+	{this.numPermissoes = numPermissoes; }
+	
+//----------------------------------------------------------------------------
 }
