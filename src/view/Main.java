@@ -17,10 +17,10 @@ public class Main {
 	
 
 		
-	for(int i = 0; i < in.getTotalPessoas(); i++){
+	for(int i = 1; i <= in.getTotalPessoas(); i++){
 	
 		
-		Thread teste = new Sistema_de_Bilheteria(i,semafaro);
+		Thread teste = new Sistema_de_Bilheteria(i ,semafaro);
 		teste.start();
 		
 		

@@ -25,11 +25,10 @@ public class Sistema_de_Bilheteria extends Thread{
 	@Override
 	public void run() {
 		
-		/*
 		try{
 			
 			semafaro.acquire();
-			entra();
+			Login_User();
 			
 		}catch(InterruptedException e){
 			
@@ -40,9 +39,9 @@ public class Sistema_de_Bilheteria extends Thread{
 			semafaro.release();
 			
 		}
-		*/
 		
-		Login_User();
+		
+		
 	}
 	
 //--------------------------------------------------------------------------------------
@@ -52,38 +51,38 @@ public class Sistema_de_Bilheteria extends Thread{
 		double tempoEspera = (double) ((Math.random() * 3000));
 		
 		
-		if (infoShow.getCapacidadeShow() > 0 && tempoEspera <= 2.5){
+		if (tempoEspera <= 2500){
 		
-			infoShow.setCapacidadeShow(infoShow.getCapacidadeShow() - 
-					avaliar_Compra(infoShow.getRIngressos()));
-			System.out.println("Ingressos Disponiveis = " + 
-			infoShow.getCapacidadeShow());
+			avaliar_Compra();
+			
 		}
 		
 		else{
 			
-			System.err.println("Tempo de Sessão esgotado :{");
+			System.err.println("Tempo de compra expirado :{");
 		    		
 		}
 	}
 	
 //--------------------------------------------------------------------------------------
 	
-	public boolean Login_User(){
+	public void Login_User(){
 		
-		int tempoEspera = (int) ((Math.random() * 3001));
+		double tempoEspera = (double) ((Math.random() * 3001));
 		
 		if (tempoEspera >= 3000){
 			
 			System.err.println("LOGIN ERROR: TIME OUT :(");
 			
-			return false;
+			
 		}
 		else{
 			
+			System.out.println("Cliente nº " + i);
 			vendas_Bilhete();
+			System.out.println(
+					"================================================");
 			
-			return true;
 		}
 			
 		
@@ -91,44 +90,29 @@ public class Sistema_de_Bilheteria extends Thread{
 	
 //--------------------------------------------------------------------------------
 	
-	public int avaliar_Compra(Random r){
+	public void avaliar_Compra(){
 		
-		int qtde = r.nextInt(4);
+		infoShow.setIngressosVendidos((int) ((Math.random()) * 4) + 1);
 		
-		while(qtde == 0){
+		
+		infoShow.setCapacidadeShow
+		(infoShow.getCapacidadeShow() - infoShow.getIngressosVendidos());
+		
+		
+		if (infoShow.getCapacidadeShow() > 0){
 			
-			qtde = r.nextInt(4);
-		}
+			System.out.println("Quantidade comprada: "
+					+ infoShow.getIngressosVendidos());
+					
+			System.out.println("Ingressos Disponiveis: " 
+			+ infoShow.getCapacidadeShow());
+			
+			
 		
-		System.out.println("Quantidade de ingressos comprados = " + qtde);
+		}else {System.err.println("INGRESSOS ESGOTADOS !");}
 		
-		return qtde;
 	}
 	
 //------------------------------------------------------------------------------
 
-	public void entra(){
-		
-		System.out.println("Carro " + i + " entrou");
-		fica();
-		sai();
-	}
-	
-	public void fica(){
-		
-		int tempo = (int) (Math.random() + 1) * 5000;
-		try {
-			Thread.sleep(tempo);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		
-	}
-	
-	public void sai(){
-		
-		System.out.println("O carro "+ i + " saiu");
-	}
 }
